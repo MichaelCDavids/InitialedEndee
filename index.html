@@ -1,995 +1,972 @@
-
-
 <!doctype html>
-
 <html lang="en">
-
   <head>
-
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Initialed Endee | Endee Studios</title>
-
+    <title>Initialed Entertainment | The Clique</title>
+    
+    <!-- Typography: Fira Code (Monospace/Coding Font) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-
-      href=https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap
-
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
-
     />
-
+    
+    <!-- FontAwesome Icons -->
     <link
-
       rel="stylesheet"
-
-      href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
-
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
     <style>
+      :root {
+        --bg-black: #09090b;
+        --bg-card: #121217;
+        --bg-card-hover: #1a1a22;
+        --purple-primary: #a855f7;
+        --purple-hover: #9333ea;
+        --purple-light: #c084fc;
+        --purple-glow: rgba(168, 85, 247, 0.35);
+        --text-main: #f4f4f5;
+        --text-muted: #a1a1aa;
+        --border-color: #27272a;
+        --font-mono: 'Fira Code', monospace;
+        --font-sans: 'Inter', sans-serif;
+      }
 
       * {
-
         margin: 0;
-
         padding: 0;
-
         box-sizing: border-box;
-
       }
-
- 
 
       body {
-
-        font-family: "Inter", sans-serif;
-
-        background: #f8fafc;
-
-        color: #334155;
-
+        font-family: var(--font-sans);
+        background-color: var(--bg-black);
+        color: var(--text-main);
         line-height: 1.7;
-
         scroll-behavior: smooth;
-
+        overflow-x: hidden;
       }
 
- 
+      /* Monospace Typography Overrides */
+      h1, h2, h3, .logo, .btn-primary, .tab-btn, .intro-text {
+        font-family: var(--font-mono);
+      }
 
-      /* Navbar */
-
-      .navbar {
-
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-
-        padding: 22px 8%;
-
-        background: rgba(255, 255, 255, 0.85);
-
-        backdrop-filter: blur(12px);
-
-        position: sticky;
-
+      /* -------------------------------------------------------------
+         INTRO OVERLAY ("THE VIBE")
+      ------------------------------------------------------------- */
+      #intro-overlay {
+        position: fixed;
         top: 0;
-
-        z-index: 999;
-
-        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #000000;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
       }
 
- 
+      #intro-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .intro-content {
+        max-width: 600px;
+      }
+
+      .intro-text {
+        font-size: 1.25rem;
+        color: var(--purple-light);
+        margin-bottom: 30px;
+        letter-spacing: -0.02em;
+        animation: pulseText 2.5s infinite ease-in-out;
+      }
+
+      @keyframes pulseText {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; text-shadow: 0 0 15px var(--purple-glow); }
+      }
+
+      .btn-enter {
+        background: transparent;
+        color: var(--text-main);
+        font-family: var(--font-mono);
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 16px 40px;
+        border: 2px solid var(--purple-primary);
+        border-radius: 4px;
+        cursor: pointer;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        box-shadow: 0 0 20px var(--purple-glow);
+        transition: all 0.3s ease;
+      }
+
+      .btn-enter:hover {
+        background: var(--purple-primary);
+        color: #ffffff;
+        box-shadow: 0 0 35px rgba(168, 85, 247, 0.75);
+        transform: scale(1.03);
+      }
+
+      /* -------------------------------------------------------------
+         MAIN SITE NAVIGATION
+      ------------------------------------------------------------- */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 8%;
+        background: rgba(9, 9, 11, 0.9);
+        backdrop-filter: blur(16px);
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        border-bottom: 1px solid var(--border-color);
+      }
 
       .logo {
-
-        font-size: 1.5rem;
-
-        font-weight: 800;
-
-        background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-
-        -webkit-background-clip: text;
-
-        -webkit-text-fill-color: transparent;
-
-        letter-spacing: -0.025em;
-
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--text-main);
         text-decoration: none;
-
+        letter-spacing: -0.03em;
       }
 
- 
+      .logo span {
+        color: var(--purple-primary);
+      }
 
       .nav-links {
-
         display: flex;
-
-        gap: 30px;
-
+        gap: 32px;
         list-style: none;
-
         align-items: center;
-
       }
-
- 
 
       .nav-links a {
-
         text-decoration: none;
-
-        color: #64748b;
-
-        font-weight: 500;
-
-        font-size: 0.95rem;
-
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
         transition: color 0.2s ease;
-
       }
-
- 
 
       .nav-links a:hover,
-
       .nav-links a.active {
-
-        color: #6366f1;
-
+        color: var(--purple-light);
       }
-
- 
 
       .mobile-menu-btn {
-
         display: none;
-
         background: none;
-
         border: none;
-
-        color: #0f172a;
-
+        color: var(--text-main);
         font-size: 1.5rem;
-
         cursor: pointer;
-
       }
 
- 
+      /* -------------------------------------------------------------
+         HERO & QUICK NAV HUB
+      ------------------------------------------------------------- */
+      .hero {
+        min-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 8% 60px;
+        text-align: center;
+        background: radial-gradient(circle at center, rgba(168, 85, 247, 0.12) 0%, rgba(9, 9, 11, 1) 70%);
+        border-bottom: 1px solid var(--border-color);
+      }
 
-      /* Sections */
+      .hero-tag {
+        display: inline-block;
+        font-family: var(--font-mono);
+        color: var(--purple-light);
+        font-size: 0.85rem;
+        border: 1px solid var(--purple-primary);
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        background: rgba(168, 85, 247, 0.08);
+      }
 
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1.15;
+        margin-bottom: 20px;
+        max-width: 900px;
+      }
+
+      .hero h1 span {
+        color: var(--purple-primary);
+        font-style: italic;
+      }
+
+      .hero p {
+        color: var(--text-muted);
+        font-size: 1.15rem;
+        max-width: 650px;
+        margin-bottom: 40px;
+      }
+
+      /* Quick Route Cards */
+      .quick-nav {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 100%;
+        max-width: 900px;
+      }
+
+      .nav-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        padding: 24px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: var(--text-main);
+        transition: all 0.3s ease;
+        text-align: left;
+      }
+
+      .nav-card:hover {
+        border-color: var(--purple-primary);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px var(--purple-glow);
+      }
+
+      .nav-card i {
+        font-size: 1.8rem;
+        color: var(--purple-primary);
+        margin-bottom: 12px;
+      }
+
+      .nav-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+      }
+
+      .nav-card p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 0;
+      }
+
+      /* -------------------------------------------------------------
+         GENERAL SECTION STYLES
+      ------------------------------------------------------------- */
       .section {
-
         padding: 100px 8%;
-
+        border-bottom: 1px solid var(--border-color);
       }
-
- 
 
       .container {
-
         max-width: 1200px;
-
         margin: auto;
-
       }
 
- 
-
-      .hero {
-
-        position: relative;
-
-        overflow: hidden;
-
-        min-height: 100vh;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        gap: 50px;
-
-        padding: 60px 8%;
-
-        background: linear-gradient(
-
-            rgba(15, 23, 42, 0.75),
-
-            rgba(15, 23, 42, 0.85)
-
-          ),
-
-          url(https://placehold.co/1920x1080/0f172a/6366f1?text=Endee+Studios);
-
-        background-size: cover;
-
-        background-position: center;
-
+      .section-header {
+        margin-bottom: 40px;
       }
 
- 
-
-      .hero-content h1 {
-
-        font-size: 3.5rem;
-
-        font-weight: 800;
-
-        color: white;
-
-        letter-spacing: -0.03em;
-
-        margin-bottom: 20px;
-
-        line-height: 1.2;
-
+      .section-title {
+        font-size: 2.2rem;
+        color: var(--text-main);
+        margin-bottom: 10px;
       }
 
- 
-
-      .hero-content h1 span {
-
-        background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
-
-        -webkit-background-clip: text;
-
-        -webkit-text-fill-color: transparent;
-
+      .section-subtitle {
+        color: var(--text-muted);
+        font-size: 1rem;
       }
 
- 
-
-      .hero-content p {
-
-        font-size: 1.15rem;
-
-        color: #e2e8f0;
-
-        margin-bottom: 30px;
-
-        max-width: 600px;
-
-      }
-
- 
-
-      .btn-primary {
-
-        display: inline-flex;
-
-        align-items: center;
-
-        gap: 10px;
-
-        background: #6366f1;
-
-        color: white;
-
-        padding: 14px 28px;
-
-        border-radius: 12px;
-
-        font-weight: 600;
-
-        text-decoration: none;
-
-        box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
-
-        transition: all 0.2s ease;
-
-      }
-
- 
-
-      .btn-primary:hover {
-
-        background: #4f46e5;
-
-        transform: translateY(-2px);
-
-      }
-
- 
-
-      .cards {
-
+      /* Grid & Card System */
+      .grid-3 {
         display: grid;
-
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-        gap: 25px;
-
-        margin-top: 40px;
-
+        gap: 24px;
       }
 
- 
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 30px;
+      }
 
       .card {
-
-        background: #ffffff;
-
-        border-radius: 20px;
-
-        border: 1px solid #e2e8f0;
-
-        padding: 30px;
-
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-
+        background: var(--bg-card);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        padding: 28px;
         transition: all 0.3s ease;
-
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
-
- 
 
       .card:hover {
-
-        transform: translateY(-4px);
-
-        border-color: #6366f1;
-
+        border-color: var(--purple-primary);
+        background: var(--bg-card-hover);
       }
-
- 
 
       .card h3 {
-
         font-size: 1.25rem;
-
-        color: #0f172a;
-
+        color: var(--text-main);
         margin-bottom: 12px;
-
       }
-
- 
 
       .card p {
-
-        color: #64748b;
-
+        color: var(--text-muted);
         font-size: 0.95rem;
-
+        margin-bottom: 20px;
       }
 
- 
+      /* Buttons */
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--purple-primary);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        width: fit-content;
+      }
 
-      /* Social Channels Styling */
+      .btn-primary:hover {
+        background: var(--purple-hover);
+        box-shadow: 0 4px 16px var(--purple-glow);
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: transparent;
+        color: var(--text-main);
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        text-decoration: none;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--purple-primary);
+        color: var(--purple-light);
+      }
+
+      /* -------------------------------------------------------------
+         SECTION 1: SOCIALS & MEDIA
+      ------------------------------------------------------------- */
+      .bio-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+        margin-bottom: 60px;
+      }
+
+      .bio-img-container img {
+        width: 100%;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        object-fit: cover;
+      }
+
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        margin-top: 20px;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
 
       .social-channels {
-
         display: flex;
-
         flex-wrap: wrap;
-
-        gap: 15px;
-
-        margin-top: 25px;
-
+        gap: 12px;
+        margin-top: 20px;
       }
-
- 
 
       .social-btn {
-
         display: inline-flex;
-
         align-items: center;
-
         gap: 10px;
-
-        background: #ffffff;
-
-        color: #334155;
-
+        background: var(--bg-card);
+        color: var(--text-main);
         padding: 12px 20px;
-
-        border-radius: 12px;
-
-        border: 1px solid #e2e8f0;
-
-        font-weight: 600;
-
-        font-size: 0.95rem;
-
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
         text-decoration: none;
-
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-
         transition: all 0.2s ease;
-
       }
-
- 
 
       .social-btn:hover {
-
+        border-color: var(--purple-primary);
+        color: var(--purple-light);
         transform: translateY(-2px);
-
-        border-color: #6366f1;
-
-        color: #6366f1;
-
       }
 
- 
-
-      .social-btn i {
-
-        font-size: 1.15rem;
-
+      /* -------------------------------------------------------------
+         SECTION 2: MERCH STOREFRONT
+      ------------------------------------------------------------- */
+      .merch-tabs {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 30px;
       }
 
- 
+      .tab-btn {
+        background: var(--bg-card);
+        color: var(--text-muted);
+        border: 1px solid var(--border-color);
+        padding: 12px 28px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+      }
 
-      /* Footer */
+      .tab-btn.active,
+      .tab-btn:hover {
+        background: var(--purple-primary);
+        color: white;
+        border-color: var(--purple-primary);
+      }
 
-      footer {
+      .merch-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 24px;
+      }
 
-        text-align: center;
+      .merch-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
 
-        padding: 40px;
+      .merch-card:hover {
+        border-color: var(--purple-primary);
+      }
 
-        color: #64748b;
+      .merch-img-placeholder {
+        width: 100%;
+        height: 240px;
+        background: #18181b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+      }
 
+      .merch-details {
+        padding: 20px;
+      }
+
+      .merch-details h4 {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+      }
+
+      .merch-price {
+        color: var(--purple-light);
+        font-family: var(--font-mono);
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .merch-pane {
+        display: none;
+      }
+
+      .merch-pane.active {
+        display: block;
+      }
+
+      /* -------------------------------------------------------------
+         SECTION 3: SERVICES HUB
+      ------------------------------------------------------------- */
+      .service-badge {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: var(--purple-light);
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .service-list {
+        list-style: none;
+        margin-bottom: 20px;
+      }
+
+      .service-list li {
+        color: var(--text-muted);
         font-size: 0.9rem;
-
-        border-top: 1px solid #e2e8f0;
-
-        background: #ffffff;
-
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
 
- 
+      .service-list li i {
+        color: var(--purple-primary);
+        font-size: 0.8rem;
+      }
 
-      /* Responsive Media Queries */
+      /* -------------------------------------------------------------
+         FOOTER
+      ------------------------------------------------------------- */
+      footer {
+        text-align: center;
+        padding: 40px;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        background: var(--bg-black);
+      }
+
+      /* -------------------------------------------------------------
+         RESPONSIVE STYLING
+      ------------------------------------------------------------- */
+      @media (max-width: 900px) {
+        .quick-nav {
+          grid-template-columns: 1fr;
+        }
+
+        .bio-wrapper {
+          grid-template-columns: 1fr;
+        }
+      }
 
       @media (max-width: 768px) {
-
-        .hero-content h1 {
-
+        .hero h1 {
           font-size: 2.5rem;
-
         }
-
- 
 
         .nav-links {
-
           display: none;
-
           flex-direction: column;
-
           position: absolute;
-
           top: 100%;
-
           left: 0;
-
           right: 0;
-
-          background: #ffffff;
-
+          background: var(--bg-black);
           padding: 25px;
-
-          border-bottom: 1px solid #e2e8f0;
-
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-
+          border-bottom: 1px solid var(--border-color);
           text-align: center;
-
           gap: 20px;
-
         }
-
- 
 
         .nav-links.active {
-
           display: flex;
-
         }
-
- 
 
         .mobile-menu-btn {
-
           display: block;
-
         }
-
       }
-
     </style>
-
   </head>
-
   <body>
 
+    <!-- -------------------------------------------------------------
+         INTRO OVERLAY ("THE VIBE")
+    ------------------------------------------------------------- -->
+    <div id="intro-overlay">
+      <div class="intro-content">
+        <p class="intro-text">&gt; You've been invited to the Initialed Clique</p>
+        <button class="btn-enter" id="enterBtn">[ ENTER ]</button>
+      </div>
+    </div>
+
+    <!-- -------------------------------------------------------------
+         NAVIGATION BAR
+    ------------------------------------------------------------- -->
     <header>
-
       <nav class="navbar">
-
-        <a href="index.html" class="logo">ND • ENDEE</a>
-
- 
+        <a href="#" class="logo">INITIALED <span>ENTERTAINMENT</span></a>
 
         <button
-
           class="mobile-menu-btn"
-
           id="menuBtn"
-
           aria-label="Toggle navigation"
-
         >
-
           <i class="fa-solid fa-bars"></i>
-
         </button>
 
- 
-
         <ul class="nav-links" id="navLinks">
-
-          <li><a href="#about">About</a></li>
-
-          <li><a href="#projects">Projects</a></li>
-
-          <li><a href="#music">Featured Releases</a></li>
-
-          <li><a href="#platforms">Listen Everywhere</a></li>
-
-          <li><a href="#gaming">Gaming & Culture</a></li>
-
+          <li><a href="#socials">Socials & Media</a></li>
+          <li><a href="#merch">Merch Store</a></li>
+          <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
-
         </ul>
-
       </nav>
-
     </header>
 
- 
-
+    <!-- -------------------------------------------------------------
+         HERO SECTION / DIRECT ROUTE HUB
+    ------------------------------------------------------------- -->
     <section class="hero">
+      <span class="hero-tag">// INITIALED ENTERTAINMENT PRESENTS</span>
+      <h1>Creative Production, Sound Design & <span>The Clique</span></h1>
+      <p>
+        Cape Town-based audio engine, original hip-hop production, visual storytelling, studio setup, and mobile media.
+      </p>
 
-      <div class="hero-content">
-
-        <h1>
-
-          <span>Initialed Endee</span><br />
-
-          Producer • Audio Engineer • Creative Visionary
-
-        </h1>
-
-        <p>
-
-          Cape Town based producer blending hip-hop, electronic production, sound design and storytelling into immersive musical experiences. Creating music, visuals and culture through Endee Studios.
-
-        </p>
-
-        <a href="#music" class="btn-primary">
-
-          <span>Explore Music Catalogue</span>
-
-          <i class="fa-solid fa-arrow-right"></i>
-
+      <!-- 3 Direct Options Specified by Client -->
+      <div class="quick-nav">
+        <a href="#socials" class="nav-card">
+          <i class="fa-solid fa-user-ninja"></i>
+          <h3>Socials</h3>
+          <p>Artist profile, high-res media & Kaapstad video.</p>
         </a>
-
-      </div>
-
-    </section>
-
- 
-
-    <section id="about" class="section" style="background: #ffffff;">
-
-      <div class="container">
-
-        <h2 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 15px;">About Me</h2>
-
-        <p style="color: #64748b; max-width: 800px; font-size: 1.05rem;">
-
-          Initialed Endee is an independent South African producer, recording artist and audio engineer. Through Endee Studios, he creates original music, visual content and immersive experiences while helping independent artists develop professional sounding releases.
-
-          <br><br>
-
-          His work spans music production, vocal engineering, creative branding, visual storytelling and digital culture.
-
-        </p>
-
-      </div>
-
-    </section>
-
- 
-
-    <section class="section">
-
-      <div class="container">
-
-        <div class="cards">
-
-          <div class="card">
-
-            <h3>Producer</h3>
-
-            <p>Professional recording and production services.</p>
-
-          </div>
-
-          <div class="card">
-
-            <h3>Artist</h3>
-
-            <p>Original releases across multiple platforms.</p>
-
-          </div>
-
-          <div class="card">
-
-            <h3>Creative Director</h3>
-
-            <p>Music, visuals, branding and storytelling.</p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
- 
-
-    <section id="projects" class="section" style="background: #ffffff;">
-
-      <div class="container">
-
-        <h2 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 15px;">Projects & Creative Work</h2>
-
-        <p style="color: #64748b;">Highlights from recent studio sessions, sound design experiments, and collaborative builds.</p>
-
-       
-
-        <div class="cards">
-
-          <div class="card">
-
-            <h3>Music Production</h3>
-
-            <p>Original releases, beat production, songwriting, mixing and mastering.</p>
-
-          </div>
-
-          <div class="card">
-
-            <h3>Visual Storytelling</h3>
-
-            <p>Music videos, promotional content, artwork concepts and creative campaigns.</p>
-
-          </div>
-
-          <div class="card">
-
-            <h3>Artist Development</h3>
-
-            <p>Helping independent artists create professional records and establish their digital presence.</p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
- 
-
-    <section id="music" class="section">
-
-      <div class="container">
-
-        <h2 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 15px;">
-
-          Featured Releases
-
-        </h2>
-
-        <p style="color: #64748b; margin-bottom: 25px;">Check out recent studio projects, hit singles, and official visual releases.</p>
-
-       
-
-        <div class="cards">
-
-          <div class="card">
-
-            <h3>Forbidden Heart</h3>
-
-            <p>The project that changed everything. Latest release from Initialed Endee.</p>
-
-            <a href=https://open.spotify.com/album/7uAbRkXhRjH4yZlre2E9V2 target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-top: 15px;">
-
-              <i class="fa-brands fa-spotify"></i> Listen on Spotify
-
-            </a>
-
-          </div>
-
-         
-
-          <div class="card">
-
-            <h3>Singles & EPs Collection</h3>
-
-            <p>Explore streaming albums, underground instrumentals, and engineered records.</p>
-
-            <a href=https://open.spotify.com/album/7yXlljD8dbTNzs5zmDiAB7 target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-top: 15px;">
-
-              <i class="fa-solid fa-compact-disc"></i> View Album
-
-            </a>
-
-          </div>
-
- 
-
-          <div class="card">
-
-            <h3>Visual & Video Release</h3>
-
-            <p>Official music video and visual release showcasing creative direction.</p>
-
-            <a href=https://youtu.be/vdxB36jFIyU target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-top: 15px;">
-
-              <i class="fa-brands fa-youtube"></i> Watch on YouTube
-
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
- 
-
-    <section class="section" style="background: #ffffff;" id="platforms">
-
-      <div class="container">
-
-        <h2 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 15px;">
-
-          Listen Everywhere
-
-        </h2>
-
-        <p style="color: #64748b; margin-bottom: 25px;">Stream Initialed Endee tracks across all major streaming services.</p>
-
-       
-
-        <div class="social-channels">
-
-          <a href=https://open.spotify.com/artist/1jZRmG0jWORdTFNow90atA target="_blank" rel="noopener noreferrer" class="social-btn">
-
-            <i class="fa-brands fa-spotify" style="color: #1db954;"></i>
-
-            Spotify
-
-          </a>
-
-          <a href=https://audiomack.com/initialed_endee target="_blank" rel="noopener noreferrer" class="social-btn">
-
-            <i class="fa-solid fa-music" style="color: #ffa500;"></i>
-
-            Audiomack
-
-          </a>
-
-          <a href=https://on.soundcloud.com/LBsNk8vXKwnRrVS3A target="_blank" rel="noopener noreferrer" class="social-btn">
-
-            <i class="fa-brands fa-soundcloud" style="color: #ff5500;"></i>
-
-            SoundCloud
-
-          </a>
-
-          <a href=https://open.spotify.com/artist/1jZRmG0jWORdTFNow90atA target="_blank" rel="noopener noreferrer" class="social-btn">
-
-            <i class="fa-brands fa-apple" style="color: #fa243c;"></i>
-
-            Apple Music
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
- 
-
-    <section id="gaming" class="section">
-
-      <div class="container">
-
-        <h2 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 15px;">Gaming & Culture</h2>
-
-        <p style="color: #64748b; max-width: 800px; font-size: 1.05rem;">
-
-          Exploring interactive media, game sound design, and the cultural shifts driven by modern digital platforms.
-
-        </p>
-
-      </div>
-
-    </section>
-
- 
-
-    <section id="contact" class="section" style="background: #ffffff;">
-
-      <div class="container">
-
-        <h2 style="font-size: 2.2rem; color: #0f172a; margin-bottom: 15px;">Get in Touch</h2>
-
-        <p style="color: #64748b; margin-bottom: 25px;">Interested in collaborating, mixing inquiries, or just want to connect? Reach out via email, phone, or social channels.</p>
-
-       
-
-        <a href=mailto:initialed.endee@gmail.com class="btn-primary" style="margin-bottom: 25px;">
-
-          <i class="fa-solid fa-envelope"></i>
-
-          <span>initialed.endee@gmail.com</span>
-
+        <a href="#merch" class="nav-card">
+          <i class="fa-solid fa-shirt"></i>
+          <h3>Merch</h3>
+          <p>Endee gear & Fan community listings.</p>
         </a>
-
- 
-
-        <div style="margin-bottom: 25px;">
-
-          <p style="color: #334155; font-size: 1.05rem;">
-
-            <strong>Call / WhatsApp:</strong>
-
-            <a href=tel:+27617084021 style="color: #6366f1; text-decoration: none; font-weight: 600;"> +27 61 708 4021</a>
-
-          </p>
-
-        </div>
-
- 
-
-        <!-- Social Links -->
-
-        <div class="social-channels">
-
-          <a href=https://www.instagram.com/Initialed_endee target="_blank" rel="noopener noreferrer" class="social-btn">
-
-            <i class="fa-brands fa-instagram" style="color: #e1306c;"></i>
-
-            <span>Instagram</span>
-
-          </a>
-
-          <a href=https://www.tiktok.com/@initialed_endee target="_blank" rel="noopener noreferrer" class="social-btn">
-
-            <i class="fa-brands fa-tiktok" style="color: #000000;"></i>
-
-            <span>TikTok</span>
-
-          </a>
-
-          <a href=https://www.youtube.com/@initialed_endee target="_blank" rel="noopener noreferrer" class="social-btn">
-
-            <i class="fa-brands fa-youtube" style="color: #ff0000;"></i>
-
-            <span>YouTube</span>
-
-          </a>
-
-          <a href=https://m.facebook.com/p/Initialed-Endee-100068707518303/ target="_blank" rel="noopener noreferrer" class="social-btn">
-
-            <i class="fa-brands fa-facebook" style="color: #1877f2;"></i>
-
-            <span>Facebook</span>
-
-          </a>
-
-          <a href=https://wa.me/27617084021 target="_blank" rel="noopener noreferrer" class="social-btn">
-
-            <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
-
-            <span>WhatsApp</span>
-
-          </a>
-
-        </div>
-
+        <a href="#services" class="nav-card">
+          <i class="fa-solid fa-sliders"></i>
+          <h3>Services</h3>
+          <p>Studio bookings, Wheels & Media setups.</p>
+        </a>
       </div>
-
     </section>
 
- 
+    <!-- -------------------------------------------------------------
+         SECTION 1: SOCIALS & ARTIST MEDIA
+    ------------------------------------------------------------- -->
+    <section id="socials" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">// ARTIST & SOCIALS</h2>
+          <p class="section-subtitle">Biography, visual releases, and streaming links.</p>
+        </div>
 
+        <div class="bio-wrapper">
+          <div class="bio-img-container">
+            <!-- 1200x1600 Placeholder for artist imagery -->
+            <img src="https://placehold.co/1200x1600/121217/a855f7?text=Initialed+Artist+Photo" alt="Initialed Artist" />
+          </div>
+          <div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Initialed Endee</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">
+              Independent South African producer, recording artist, and audio engineer operating under Initialed Entertainment. Blending raw Cape Town hip-hop, electronic soundscapes, and visual aesthetics into unified multi-channel releases.
+            </p>
+            
+            <h4 style="font-family: var(--font-mono); margin-bottom: 10px;">Listen & Connect Across Platforms:</h4>
+            <div class="social-channels">
+              <a href="https://open.spotify.com/artist/1jZRmG0jWORdTFNow90atA" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <i class="fa-brands fa-spotify" style="color: #1db954;"></i> Spotify
+              </a>
+              <a href="https://audiomack.com/initialed_endee" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <i class="fa-solid fa-music" style="color: #ffa500;"></i> Audiomack
+              </a>
+              <a href="https://on.soundcloud.com/LBsNk8vXKwnRrVS3A" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <i class="fa-brands fa-soundcloud" style="color: #ff5500;"></i> SoundCloud
+              </a>
+              <a href="https://www.instagram.com/Initialed_endee" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <i class="fa-brands fa-instagram" style="color: #e1306c;"></i> Instagram
+              </a>
+              <a href="https://www.tiktok.com/@initialed_endee" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kaapstad Music Video Stream -->
+        <div style="margin-top: 40px;">
+          <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Official Music Video: Kaapstad</h3>
+          <p style="color: var(--text-muted);">High-definition YouTube video stream.</p>
+          <div class="video-container">
+            <iframe 
+              src="https://www.youtube.com/embed/vdxB36jFIyU" 
+              title="Kaapstad Music Video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         SECTION 2: MERCH STOREFRONT
+    ------------------------------------------------------------- -->
+    <section id="merch" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">// MERCH STOREFRONT</h2>
+          <p class="section-subtitle">Official apparel & Fan community seller platform.</p>
+        </div>
+
+        <!-- Merch Category Toggle -->
+        <div class="merch-tabs">
+          <button class="tab-btn active" onclick="switchMerch('endee')">Initialed Collection</button>
+          <button class="tab-btn" onclick="switchMerch('clique')">Clique / Club Marketplace</button>
+        </div>
+
+        <!-- Initialed Official Merch Pane -->
+        <div id="pane-endee" class="merch-pane active">
+          <div class="merch-grid">
+            <div class="merch-card">
+              <div class="merch-img-placeholder">[ 1000x1000 PNG ]<br>Hoodie Mockup</div>
+              <div class="merch-details">
+                <h4>Clique Heavyweight Hoodie</h4>
+                <div class="merch-price">R 650.00</div>
+                <button class="btn-secondary">View Product</button>
+              </div>
+            </div>
+            <div class="merch-card">
+              <div class="merch-img-placeholder">[ 1000x1000 PNG ]<br>Tee Mockup</div>
+              <div class="merch-details">
+                <h4>Initialed Graphic Tee</h4>
+                <div class="merch-price">R 350.00</div>
+                <button class="btn-secondary">View Product</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clique/Club Fan Marketplace Pane -->
+        <div id="pane-clique" class="merch-pane">
+          <div class="merch-grid">
+            <div class="merch-card">
+              <div class="merch-img-placeholder">[ Fan Merch Item ]</div>
+              <div class="merch-details">
+                <h4>Community Contributor Tee</h4>
+                <div class="merch-price">R 300.00</div>
+                <button class="btn-secondary">View Product</button>
+              </div>
+            </div>
+            <!-- Fan Listing Callout -->
+            <div class="merch-card" style="border-style: dashed; justify-content: center; text-align: center; padding: 30px;">
+              <i class="fa-solid fa-store" style="font-size: 2rem; color: var(--purple-primary); margin-bottom: 15px;"></i>
+              <h4 style="margin-bottom: 10px;">Sell Your Own Merch</h4>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">
+                Are you part of the Clique? List and sell your custom apparel directly through our portal.
+              </p>
+              <a href="#contact" class="btn-primary" style="margin: auto;">Submit Design</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         SECTION 3: SERVICES HUB
+    ------------------------------------------------------------- -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">// ENTERTAINMENT SERVICES</h2>
+          <p class="section-subtitle">Professional production, mobile rigs, and visual media execution.</p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Service 1: Studio -->
+          <div class="card">
+            <div>
+              <span class="service-badge">[ 01. AUDIO ]</span>
+              <h3>Studio Services</h3>
+              <ul class="service-list">
+                <li><i class="fa-solid fa-chevron-right"></i> Collaborations & Recording</li>
+                <li><i class="fa-solid fa-chevron-right"></i> Beat Production & Catalog</li>
+                <li><i class="fa-solid fa-chevron-right"></i> Mixing & Mastering</li>
+                <li><i class="fa-solid fa-chevron-right"></i> Custom Specials & Packages</li>
+              </ul>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+              <a href="#contact" class="btn-primary">Book Studio Session</a>
+              <!-- BeatStars Direct Link -->
+              <a href="https://www.beatstars.com" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                <i class="fa-solid fa-music"></i> Buy Beats (BeatStars)
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 2: Wheels -->
+          <div class="card">
+            <div>
+              <span class="service-badge">[ 02. MOBILITY ]</span>
+              <h3>Wheels</h3>
+              <ul class="service-list">
+                <li><i class="fa-solid fa-chevron-right"></i> Vehicle Rental & Production Cars</li>
+                <li><i class="fa-solid fa-chevron-right"></i> Mobile Recording Rig (Studio on Wheels)</li>
+                <li><i class="fa-solid fa-chevron-right"></i> On-Location Tracking</li>
+              </ul>
+            </div>
+            <div style="margin-top: 20px;">
+              <a href="#contact" class="btn-primary">Inquire Wheels Hire</a>
+            </div>
+          </div>
+
+          <!-- Service 3: Media -->
+          <div class="card">
+            <div>
+              <span class="service-badge">[ 03. VISUALS ]</span>
+              <h3>Media & Production</h3>
+              <ul class="service-list">
+                <li><i class="fa-solid fa-chevron-right"></i> Full Music Video Direction</li>
+                <li><i class="fa-solid fa-chevron-right"></i> High-Resolution Photography</li>
+                <li><i class="fa-solid fa-chevron-right"></i> Promotional Media Packages</li>
+              </ul>
+            </div>
+            <div style="margin-top: 20px;">
+              <a href="#contact" class="btn-primary">Request Media Package</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         SECTION 4: CONTACT & BOOKINGS
+    ------------------------------------------------------------- -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">// CONTACT & INQUIRIES</h2>
+          <p class="section-subtitle">Connect directly with Initialed Entertainment for bookings and work.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Direct Communication</h3>
+            <p>Reach out for studio bookings, beat inquiries, wheel rentals, or media collaborations.</p>
+            
+            <a href="mailto:initialed.endee@gmail.com" class="btn-primary" style="margin-bottom: 20px;">
+              <i class="fa-solid fa-envelope"></i> initialed.endee@gmail.com
+            </a>
+
+            <p style="color: var(--text-main); font-family: var(--font-mono); font-size: 0.95rem;">
+              <strong>Call / WhatsApp:</strong>
+              <a href="tel:+27617084021" style="color: var(--purple-light); text-decoration: none;"> +27 61 708 4021</a>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Social & Community Channels</h3>
+            <p>Follow official releases and get behind-the-scenes content.</p>
+            <div class="social-channels">
+              <a href="https://wa.me/27617084021" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> WhatsApp
+              </a>
+              <a href="https://www.youtube.com/@initialed_endee" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <i class="fa-brands fa-youtube" style="color: #ff0000;"></i> YouTube
+              </a>
+              <a href="https://m.facebook.com/p/Initialed-Endee-100068707518303/" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <i class="fa-brands fa-facebook" style="color: #1877f2;"></i> Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         FOOTER
+    ------------------------------------------------------------- -->
     <footer>
-
-      <p>© 2026 Initialed Endee · Endee Studios. All rights reserved.</p>
-
+      <p>© 2026 Initialed Entertainment. All rights reserved.</p>
     </footer>
 
- 
-
+    <!-- -------------------------------------------------------------
+         INTERACTIVE JAVASCRIPT LOGIC
+    ------------------------------------------------------------- -->
     <script>
+      // Intro Overlay Handler
+      const enterBtn = document.getElementById("enterBtn");
+      const introOverlay = document.getElementById("intro-overlay");
 
+      enterBtn.addEventListener("click", () => {
+        introOverlay.classList.add("hidden");
+      });
+
+      // Mobile Menu Toggle
       const menuBtn = document.getElementById("menuBtn");
-
       const navLinks = document.getElementById("navLinks");
 
- 
-
       menuBtn.addEventListener("click", () => {
-
         navLinks.classList.toggle("active");
-
         const icon = menuBtn.querySelector("i");
-
         if (navLinks.classList.contains("active")) {
-
           icon.classList.remove("fa-bars");
-
           icon.classList.add("fa-xmark");
-
         } else {
-
           icon.classList.remove("fa-xmark");
-
           icon.classList.add("fa-bars");
-
         }
-
       });
-
- 
 
       navLinks.querySelectorAll("a").forEach((link) => {
-
         link.addEventListener("click", () => {
-
           navLinks.classList.remove("active");
-
           const icon = menuBtn.querySelector("i");
-
           icon.classList.remove("fa-xmark");
-
           icon.classList.add("fa-bars");
-
         });
-
       });
 
+      // Merch Category Switcher
+      function switchMerch(category) {
+        // Toggle tab styles
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        event.target.classList.add('active');
+
+        // Toggle merchandise panes
+        const panes = document.querySelectorAll('.merch-pane');
+        panes.forEach(pane => pane.classList.remove('active'));
+        
+        document.getElementById(`pane-${category}`).classList.add('active');
+      }
     </script>
-
   </body>
-
 </html>
