@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>Initialed Entertained</title>
+    <title>Initialed Entertainment</title>
     
     <!-- FontAwesome Icons -->
     <link
@@ -14,8 +14,8 @@
     <style>
       :root {
         --bg-black: #000000;
-        --bg-card: #0a0a0c;
-        --bg-card-hover: #121216;
+        --bg-card: rgba(10, 10, 12, 0.9);
+        --bg-card-hover: rgba(18, 18, 22, 0.95);
         --purple-primary: #a855f7;
         --purple-hover: #9333ea;
         --purple-light: #c084fc;
@@ -36,6 +36,15 @@
       body {
         font-family: var(--font-terminal);
         background-color: var(--bg-black);
+        /* Full Background Image with Cinematic Dark Gradient Overlay */
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.85),
+            rgba(0, 0, 0, 0.92)
+          ),
+          url('assets/images/nathmie.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
         color: var(--text-main);
         line-height: 1.6;
         overflow-x: hidden;
@@ -70,18 +79,22 @@
       .terminal-box {
         width: 100%;
         max-width: 650px;
-        padding: 24px 18px;
+        padding: 30px 20px;
         border: 1px solid var(--purple-primary);
         box-shadow: 0 0 25px var(--purple-glow);
         background: rgba(10, 10, 12, 0.98);
         border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
 
       .typewriter-text {
         font-family: var(--font-terminal);
-        font-size: clamp(1rem, 4vw, 1.2rem);
+        font-size: clamp(1.1rem, 4.5vw, 1.35rem);
         color: var(--purple-light);
-        margin-bottom: 24px;
+        margin-bottom: 30px;
         white-space: pre-wrap;
         word-break: break-word;
         text-shadow: 0 0 10px var(--purple-glow);
@@ -119,7 +132,7 @@
         transition: all 0.3s ease;
         display: none;
         width: 100%;
-        max-width: 320px;
+        max-width: 280px;
         min-height: 48px;
       }
 
@@ -137,7 +150,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 16px 5%;
-        background: rgba(0, 0, 0, 0.95);
+        background: rgba(0, 0, 0, 0.85);
         backdrop-filter: blur(12px);
         position: sticky;
         top: 0;
@@ -224,22 +237,23 @@
         padding: 30px 4%;
       }
 
+      .hero-hub .present-label {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+
       .hero-hub h1 {
-        font-size: clamp(2rem, 7vw, 3rem);
-        margin-bottom: 16px;
-        line-height: 1.2;
+        font-size: clamp(2.2rem, 8vw, 3.5rem);
+        margin-bottom: 24px;
+        line-height: 1.15;
       }
 
       .hero-hub h1 span {
         color: var(--purple-primary);
         text-shadow: 0 0 15px var(--purple-glow);
-      }
-
-      .hero-hub p {
-        color: var(--text-muted);
-        font-size: clamp(0.9rem, 3.5vw, 1.05rem);
-        max-width: 600px;
-        margin-bottom: 30px;
       }
 
       .route-grid {
@@ -248,10 +262,12 @@
         gap: 16px;
         width: 100%;
         max-width: 900px;
+        margin-top: 10px;
       }
 
       .route-card {
         background: var(--bg-card);
+        backdrop-filter: blur(8px);
         border: 1px solid var(--border-color);
         padding: 24px 18px;
         border-radius: 8px;
@@ -304,6 +320,7 @@
 
       .card {
         background: var(--bg-card);
+        backdrop-filter: blur(8px);
         border: 1px solid var(--border-color);
         border-radius: 8px;
         padding: 20px;
@@ -337,7 +354,7 @@
       }
 
       .btn-secondary {
-        background: transparent;
+        background: rgba(0, 0, 0, 0.4);
         color: var(--text-main);
         border: 1px solid var(--border-color);
       }
@@ -407,6 +424,7 @@
         font-family: var(--font-terminal);
         font-size: 0.75rem;
         border-top: 1px solid var(--border-color);
+        background: rgba(0, 0, 0, 0.9);
       }
 
       /* -------------------------------------------------------------
@@ -448,14 +466,14 @@
     <div id="intro-overlay">
       <div class="terminal-box">
         <div class="typewriter-text" id="typewriter"></div>
-        <button class="btn-enter" id="enterBtn">[ ENTER SITE ]</button>
+        <button class="btn-enter" id="enterBtn">[ ENTER ]</button>
       </div>
     </div>
 
     <!-- NAVBAR -->
     <header>
       <nav class="navbar">
-        <a class="logo" onclick="switchView('hub')">INITIALED <span>ENTERTAINED</span></a>
+        <a class="logo" onclick="switchView('hub')">INITIALED <span>ENTERTAINMENT</span></a>
         
         <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
           <i class="fa-solid fa-bars"></i>
@@ -476,8 +494,8 @@
     <!-- VIEW 1: HUB (HOME) -->
     <section id="view-hub" class="view-section active">
       <div class="hero-hub">
-        <h1>Initialed <span>Entertained</span></h1>
-        <p>Producer • Audio Engineer • Creative Visionary based in Cape Town.</p>
+        <div class="present-label">Initialed Entertainment Presents</div>
+        <h1>The <span>Clique</span></h1>
         <div class="route-grid">
           <div class="route-card" onclick="switchView('socials')">
             <i class="fa-solid fa-user-ninja"></i>
@@ -504,9 +522,9 @@
       <p class="section-subtitle">Background, vision, and operational scope.</p>
 
       <div class="card">
-        <h3 style="color: var(--purple-light); margin-bottom: 12px;">Initialed Endee</h3>
+        <h3 style="color: var(--purple-light); margin-bottom: 12px;">Initialed Entertainment</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
-          Initialed Entertained is an independent South African producer, recording artist, and audio engineer. Operating through Initialed Entertained, he creates original music, visual content, and immersive digital experiences while assisting independent artists in developing release-ready records.
+          Initialed Entertainment is an independent South African producer, recording artist, and audio engineer. Operating through Initialed Entertainment, he creates original music, visual content, and immersive digital experiences while assisting independent artists in developing release-ready records.
         </p>
         <p style="color: var(--text-muted); font-size: 0.95rem;">
           His work encompasses hip-hop production, vocal engineering, creative branding, visual storytelling, and digital media culture.
@@ -553,10 +571,10 @@
 
       <!-- Kaapstad Music Video -->
       <div class="card">
-        <h3 style="margin-bottom: 5px;">Featured Video: Eternal</h3>
+        <h3 style="margin-bottom: 5px;">Featured Video: Kaapstad ft. King Klutch</h3>
         <p style="color: var(--text-muted); font-size: 0.85rem;">Official music video stream.</p>
         <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/vdxB36jFIyU" title="Kaapstad Music Video" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/I7KX11Y4Wq4" title="Kaapstad Music Video" allowfullscreen></iframe>
         </div>
       </div>
     </section>
@@ -569,7 +587,7 @@
       <div class="grid-3" style="margin-bottom: 24px;">
         <div class="card">
           <h4>Forbidden Heart</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 8px 0 16px;">The project that changed everything. Featured release from Initialed Entertained.</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 8px 0 16px;">The project that changed everything. Featured release from Initialed Entertainment.</p>
           <a href="https://open.spotify.com/album/7uAbRkXhRjH4yZlre2E9V2" target="_blank" class="btn-primary"><i class="fa-brands fa-spotify"></i> Listen on Spotify</a>
         </div>
         <div class="card">
@@ -580,7 +598,7 @@
         <div class="card">
           <h4>Visual & Video Release</h4>
           <p style="color: var(--text-muted); font-size: 0.85rem; margin: 8px 0 16px;">Official music videos showcasing creative direction.</p>
-          <a href="https://youtu.be/vdxB36jFIyU" target="_blank" class="btn-primary"><i class="fa-brands fa-youtube"></i> Watch on YouTube</a>
+          <a href="https://youtu.be/I7KX11Y4Wq4" target="_blank" class="btn-primary"><i class="fa-brands fa-youtube"></i> Watch on YouTube</a>
         </div>
       </div>
 
@@ -604,13 +622,13 @@
 
       <div id="pane-endee" class="merch-pane active">
         <div class="card">
-          <div style="height: 160px; background:#121216; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:0.8rem; margin-bottom:15px; border-radius: 4px;">[ 1000x1000 PNG ]</div>
+          <div style="height: 160px; background: rgba(18,18,22,0.8); display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:0.8rem; margin-bottom:15px; border-radius: 4px;">[ 1000x1000 PNG ]</div>
           <h4>Initialed Heavyweight Hoodie</h4>
           <p style="color: var(--purple-light); margin: 6px 0 16px; font-weight: bold;">R 650.00</p>
           <button class="btn-secondary">Inquire / Buy</button>
         </div>
         <div class="card">
-          <div style="height: 160px; background:#121216; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:0.8rem; margin-bottom:15px; border-radius: 4px;">[ 1000x1000 PNG ]</div>
+          <div style="height: 160px; background: rgba(18,18,22,0.8); display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:0.8rem; margin-bottom:15px; border-radius: 4px;">[ 1000x1000 PNG ]</div>
           <h4>Initialed Graphic Tee</h4>
           <p style="color: var(--purple-light); margin: 6px 0 16px; font-weight: bold;">R 350.00</p>
           <button class="btn-secondary">Inquire / Buy</button>
@@ -619,7 +637,7 @@
 
       <div id="pane-fan" class="merch-pane">
         <div class="card">
-          <div style="height: 160px; background:#121216; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:0.8rem; margin-bottom:15px; border-radius: 4px;">[ Fan Merch Drop ]</div>
+          <div style="height: 160px; background: rgba(18,18,22,0.8); display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:0.8rem; margin-bottom:15px; border-radius: 4px;">[ Fan Merch Drop ]</div>
           <h4>Community Contributor Tee</h4>
           <p style="color: var(--purple-light); margin: 6px 0 16px; font-weight: bold;">R 300.00</p>
           <button class="btn-secondary">View Item</button>
@@ -636,7 +654,7 @@
         <div class="card">
           <h3 style="color: var(--purple-light); margin-bottom: 10px;">Studio</h3>
           <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">Collaborations, bookings, recording, mixing, mastering & BeatStars beat purchasing.</p>
-          <a href="https://www.beatstars.com" target="_blank" class="btn-primary">Buy Beats (BeatStars)</a>
+          <a href="https://www.beatstars.com/initialed3ndee" target="_blank" class="btn-primary">Buy Beats (BeatStars)</a>
         </div>
         <div class="card">
           <h3 style="color: var(--purple-light); margin-bottom: 10px;">Wheels</h3>
@@ -678,13 +696,13 @@
     </section>
 
     <footer>
-      <p>© 2026 Initialed Entertained. All rights reserved.</p>
+      <p>© 2026 Initialed Entertainment. All rights reserved.</p>
     </footer>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-      // Matrix Typewriter Effect
-      const message = "You've been invited to Initialed Entertained_";
+      // Matrix Typewriter Effect ("Welcome to The Clique")
+      const message = "Welcome to The Clique_";
       const typewriterElem = document.getElementById("typewriter");
       const enterBtn = document.getElementById("enterBtn");
       let i = 0;
