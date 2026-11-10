@@ -36,7 +36,6 @@
       body {
         font-family: var(--font-terminal);
         background-color: var(--bg-black);
-        /* Full Background Image with Cinematic Dark Gradient Overlay */
         background-image: linear-gradient(
             rgba(0, 0, 0, 0.85),
             rgba(0, 0, 0, 0.92)
@@ -51,9 +50,7 @@
         overflow-x: hidden;
       }
 
-      /* -------------------------------------------------------------
-         MATRIX / TERMINAL INTRO OVERLAY
-      ------------------------------------------------------------- */
+      /* Terminal Overlay */
       #intro-overlay {
         position: fixed;
         top: 0;
@@ -143,9 +140,7 @@
         color: #000000;
       }
 
-      /* -------------------------------------------------------------
-         NAVBAR & MOBILE MENU
-      ------------------------------------------------------------- */
+      /* Navbar */
       .navbar {
         display: flex;
         justify-content: space-between;
@@ -209,9 +204,7 @@
         text-shadow: 0 0 8px var(--purple-glow);
       }
 
-      /* -------------------------------------------------------------
-         VIEWS & SECTIONS
-      ------------------------------------------------------------- */
+      /* Views & Sections */
       .view-section {
         display: none;
         min-height: 85vh;
@@ -299,9 +292,7 @@
         color: var(--text-muted);
       }
 
-      /* -------------------------------------------------------------
-         GENERAL COMPONENTS
-      ------------------------------------------------------------- */
+      /* Components */
       .section-title {
         font-size: clamp(1.4rem, 5vw, 1.8rem);
         margin-bottom: 6px;
@@ -310,7 +301,7 @@
       .section-subtitle {
         color: var(--text-muted);
         font-size: 0.85rem;
-        margin-bottom: 30px;
+        margin-bottom: 24px;
       }
 
       .grid-3 {
@@ -331,13 +322,13 @@
       .price-table {
         width: 100%;
         border-collapse: collapse;
-        margin-top: 15px;
-        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 15px;
         font-size: 0.9rem;
       }
 
       .price-table th, .price-table td {
-        padding: 12px;
+        padding: 10px 12px;
         text-align: left;
         border-bottom: 1px solid var(--border-color);
       }
@@ -351,6 +342,40 @@
         color: var(--purple-light);
         font-weight: bold;
       }
+
+      /* Service Tabs Styling */
+      .service-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 24px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+
+      .service-tab-btn {
+        flex: 1;
+        background: var(--bg-card);
+        color: var(--text-muted);
+        border: 1px solid var(--border-color);
+        padding: 12px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: var(--font-terminal);
+        font-size: 0.8rem;
+        white-space: nowrap;
+        min-height: 48px;
+        transition: all 0.2s ease;
+      }
+
+      .service-tab-btn.active {
+        background: var(--purple-primary);
+        color: #000000;
+        font-weight: 700;
+        border-color: var(--purple-primary);
+      }
+
+      .service-pane { display: none; }
+      .service-pane.active { display: block; }
 
       .btn-primary, .btn-secondary {
         display: inline-flex;
@@ -452,9 +477,6 @@
         background: rgba(0, 0, 0, 0.9);
       }
 
-      /* -------------------------------------------------------------
-         RESPONSIVE MEDIA QUERIES
-      ------------------------------------------------------------- */
       @media (max-width: 850px) {
         .route-grid { grid-template-columns: 1fr; }
       }
@@ -482,6 +504,7 @@
           border: 1px solid var(--border-color);
         }
         .merch-tabs { flex-direction: column; }
+        .service-tabs { flex-direction: column; }
       }
     </style>
   </head>
@@ -535,7 +558,7 @@
           <div class="route-card" onclick="switchView('services')">
             <i class="fa-solid fa-sliders"></i>
             <h3>Services</h3>
-            <p>Studio bookings, price list, production & media packages.</p>
+            <p>Studio bookings, price catalogue & creative media packages.</p>
           </div>
         </div>
       </div>
@@ -547,12 +570,12 @@
       <p class="section-subtitle">Background, vision, and operational scope.</p>
 
       <div class="card">
-        <h3 style="color: var(--purple-light); margin-bottom: 12px;">Initialed Entertainment Agency</h3>
+        <h3 style="color: var(--purple-light); margin-bottom: 12px;">Initialed Entertainment</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
           Initialed Entertainment is a full-service creative media agency offering content creation, social media management, videography, photography, drone services, podcast production, branding, website design, and music production.
         </p>
         <p style="color: var(--text-muted); font-size: 0.95rem;">
-          Operating through Initialed Entertainment, original music, visual content, and immersive digital experiences are created while assisting independent artists and businesses in developing release-ready records and robust digital footprints.
+          Operating through Initialed Entertainment, original music, visual content, and immersive digital experiences are created while assisting independent artists and businesses in developing release-ready records.
         </p>
       </div>
 
@@ -670,95 +693,142 @@
       </div>
     </section>
 
-    <!-- VIEW 6: SERVICES & PRICING -->
+    <!-- VIEW 6: SERVICES & PRICING CATALOGUE (UPGRADED TABBED LAYOUT) -->
     <section id="view-services" class="view-section">
-      <h2 class="section-title">> SERVICES & PRICING CATALOGUE</h2>
+      <h2 class="section-title">> SERVICES & PRICE CATALOGUE</h2>
       <p class="section-subtitle">Professional studio recording, beat production, packages, and terms.</p>
 
-      <!-- Studio Recording -->
-      <div class="card">
-        <h3 style="color: var(--purple-light); margin-bottom: 10px;"><i class="fa-solid fa-microphone"></i> Studio Recording</h3>
-        <table class="price-table">
-          <tr><th>Service</th><th>Price</th></tr>
-          <tr><td>1 Hour Session</td><td><span class="price">R200</span></td></tr>
-          <tr><td>3 Hour Block</td><td><span class="price">R500</span></td></tr>
-          <tr><td>5 Hour Block</td><td><span class="price">R900</span></td></tr>
-          <tr><td>Full Day (8 Hours)</td><td><span class="price">R1,500</span></td></tr>
-        </table>
-        <a href="#contact" onclick="switchView('contact')" class="btn-primary">Book Studio Session</a>
+      <!-- Services Sub-Tabs -->
+      <div class="service-tabs">
+        <button class="service-tab-btn active" onclick="switchServiceTab('audio', this)"><i class="fa-solid fa-microphone"></i> Studio & Beats</button>
+        <button class="service-tab-btn" onclick="switchServiceTab('packages', this)"><i class="fa-solid fa-layer-group"></i> Creative Packages</button>
+        <button class="service-tab-btn" onclick="switchServiceTab('specials', this)"><i class="fa-solid fa-bolt"></i> Business & Monthly</button>
+        <button class="service-tab-btn" onclick="switchServiceTab('terms', this)"><i class="fa-solid fa-file-contract"></i> Contracts & T&Cs</button>
       </div>
 
-      <!-- Beat Production -->
-      <div class="card">
-        <h3 style="color: var(--purple-light); margin-bottom: 10px;"><i class="fa-solid fa-music"></i> Beat Production</h3>
-        <table class="price-table">
-          <tr><th>Service</th><th>Price</th></tr>
-          <tr><td>Basic Beat</td><td><span class="price">R500</span></td></tr>
-          <tr><td>Premium Beat</td><td><span class="price">R1,000</span></td></tr>
-          <tr><td>Exclusive Beat</td><td><span class="price">R2,000</span></td></tr>
-        </table>
-        <a href="#contact" onclick="switchView('contact')" class="btn-primary">Buy Beats (BeatStars)</a>
+      <!-- PANE 1: AUDIO & STUDIO -->
+      <div id="service-audio" class="service-pane active">
+        <div class="grid-3">
+          <div class="card">
+            <h3 style="color: var(--purple-light); margin-bottom: 10px;">Studio Recording</h3>
+            <table class="price-table">
+              <tr><th>Service</th><th>Price</th></tr>
+              <tr><td>1 Hour Session</td><td><span class="price">R200</span></td></tr>
+              <tr><td>3 Hour Block</td><td><span class="price">R500</span></td></tr>
+              <tr><td>5 Hour Block</td><td><span class="price">R900</span></td></tr>
+              <tr><td>Full Day (8 Hours)</td><td><span class="price">R1,500</span></td></tr>
+            </table>
+            <a href="#contact" onclick="switchView('contact')" class="btn-primary" style="margin-top: 10px;">Book Studio Session</a>
+          </div>
+
+          <div class="card">
+            <h3 style="color: var(--purple-light); margin-bottom: 10px;">Beat Production</h3>
+            <table class="price-table">
+              <tr><th>Service</th><th>Price</th></tr>
+              <tr><td>Basic Beat</td><td><span class="price">R500</span></td></tr>
+              <tr><td>Premium Beat</td><td><span class="price">R1,000</span></td></tr>
+              <tr><td>Exclusive Beat</td><td><span class="price">R2,000</span></td></tr>
+            </table>
+            <a href="#contact" onclick="switchView('contact')" class="btn-primary" style="margin-top: 10px;">Buy Beats (BeatStars)</a>
+          </div>
+        </div>
       </div>
 
-      <!-- Packages (Artist, Music Video, Podcast, Business, Monthly) -->
-      <div class="card">
-        <h3 style="color: var(--purple-light); margin-bottom: 15px;"><i class="fa-solid fa-layer-group"></i> Production & Creative Packages</h3>
-        
-        <h4 style="color: var(--text-main); font-size: 1rem; margin-top: 5px;">Artist Packages</h4>
-        <table class="price-table">
-          <tr><td>Starter Artist Package</td><td><span class="price">R1,500</span></td></tr>
-          <tr><td>Rising Artist Package</td><td><span class="price">R3,500</span></td></tr>
-          <tr><td>Professional Artist Package</td><td><span class="price">R6,000</span></td></tr>
-        </table>
+      <!-- PANE 2: CREATIVE PACKAGES -->
+      <div id="service-packages" class="service-pane">
+        <div class="grid-3">
+          <div class="card">
+            <h3 style="color: var(--purple-light); margin-bottom: 10px;">Artist Packages</h3>
+            <table class="price-table">
+              <tr><th>Package</th><th>Price</th></tr>
+              <tr><td>Starter Artist</td><td><span class="price">R1,500</span></td></tr>
+              <tr><td>Rising Artist</td><td><span class="price">R3,500</span></td></tr>
+              <tr><td>Professional Artist</td><td><span class="price">R6,000</span></td></tr>
+            </table>
+          </div>
 
-        <h4 style="color: var(--text-main); font-size: 1rem; margin-top: 15px;">Music Video Packages</h4>
-        <table class="price-table">
-          <tr><td>Bronze</td><td><span class="price">R5,000</span></td></tr>
-          <tr><td>Silver</td><td><span class="price">R8,000</span></td></tr>
-          <tr><td>Gold</td><td><span class="price">R12,000</span></td></tr>
-        </table>
+          <div class="card">
+            <h3 style="color: var(--purple-light); margin-bottom: 10px;">Music Video Packages</h3>
+            <table class="price-table">
+              <tr><th>Tier</th><th>Price</th></tr>
+              <tr><td>Bronze</td><td><span class="price">R5,000</span></td></tr>
+              <tr><td>Silver</td><td><span class="price">R8,000</span></td></tr>
+              <tr><td>Gold</td><td><span class="price">R12,000</span></td></tr>
+            </table>
+          </div>
 
-        <h4 style="color: var(--text-main); font-size: 1rem; margin-top: 15px;">Podcast Packages</h4>
-        <table class="price-table">
-          <tr><td>Podcast Starter</td><td><span class="price">R1,500 / episode</span></td></tr>
-          <tr><td>Podcast Pro</td><td><span class="price">R3,000 / episode</span></td></tr>
-        </table>
-
-        <h4 style="color: var(--text-main); font-size: 1rem; margin-top: 15px;">Business Specials</h4>
-        <table class="price-table">
-          <tr><td>Restaurant Content Day</td><td><span class="price">R3,500</span></td></tr>
-          <tr><td>Real Estate Listing Package</td><td><span class="price">R2,500</span></td></tr>
-          <tr><td>Small Business Startup Package</td><td><span class="price">R5,000</span></td></tr>
-        </table>
-
-        <h4 style="color: var(--text-main); font-size: 1rem; margin-top: 15px;">Monthly Specials</h4>
-        <table class="price-table">
-          <tr><td>Social Media Launch Special</td><td><span class="price">R3,500 / month</span></td></tr>
-          <tr><td>Musician Marketing Bundle</td><td><span class="price">R4,500 / month</span></td></tr>
-        </table>
+          <div class="card">
+            <h3 style="color: var(--purple-light); margin-bottom: 10px;">Podcast Packages</h3>
+            <table class="price-table">
+              <tr><th>Format</th><th>Price</th></tr>
+              <tr><td>Podcast Starter</td><td><span class="price">R1,500 / ep</span></td></tr>
+              <tr><td>Podcast Pro</td><td><span class="price">R3,000 / ep</span></td></tr>
+            </table>
+          </div>
+        </div>
       </div>
 
-      <!-- Contracts & Loyalty -->
-      <div class="card">
-        <h3 style="color: var(--purple-light); margin-bottom: 10px;"><i class="fa-solid fa-handshake"></i> Contracts & Loyalty Specials</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">
-          <strong>Every Third Month Loyalty Special:</strong> Clients on active monthly contracts receive ONE FREE bonus item every third consecutive month (choice of: 1 promotional reel, 1 hour studio time, 10 edited photographs, website update session, or social media strategy consultation).
-        </p>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 6px;"><strong>Month-to-Month:</strong> 30 days written notice.</p>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 6px;"><strong>6 Month Contract:</strong> 5% discount and locked pricing.</p>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;"><strong>12 Month Contract:</strong> 10% discount, priority booking, and quarterly strategy session.</p>
+      <!-- PANE 3: BUSINESS & SPECIALS -->
+      <div id="service-specials" class="service-pane">
+        <div class="grid-3">
+          <div class="card">
+            <h3 style="color: var(--purple-light); margin-bottom: 10px;">Business Specials</h3>
+            <table class="price-table">
+              <tr><th>Offering</th><th>Price</th></tr>
+              <tr><td>Restaurant Content Day</td><td><span class="price">R3,500</span></td></tr>
+              <tr><td>Real Estate Listing</td><td><span class="price">R2,500</span></td></tr>
+              <tr><td>Small Business Startup</td><td><span class="price">R5,000</span></td></tr>
+            </table>
+          </div>
 
-        <h4 style="color: var(--text-main); font-size: 0.95rem; margin-bottom: 8px;">Terms and Conditions:</h4>
-        <ul style="color: var(--text-muted); font-size: 0.85rem; padding-left: 20px; line-height: 1.5;">
-          <li>50% deposit required for one-time projects before work commences.</li>
-          <li>Outstanding balances are due before final delivery of files.</li>
-          <li>Contract clients are billed monthly via EFT, recurring card payment or approved debit order.</li>
-          <li>Travel outside Cape Town CBD may incur additional travel fees.</li>
-          <li>Two revision rounds included unless otherwise stated.</li>
-          <li>Raw footage, project files and source materials remain property of Initialed Entertainment unless agreed in writing.</li>
-          <li>Late payments may result in suspension of services.</li>
-          <li>Bookings are confirmed only after receipt of payment and signed agreement.</li>
-        </ul>
+          <div class="card">
+            <h3 style="color: var(--purple-light); margin-bottom: 10px;">Monthly Specials</h3>
+            <table class="price-table">
+              <tr><th>Bundle</th><th>Price</th></tr>
+              <tr><td>Social Media Launch</td><td><span class="price">R3,500 / mo</span></td></tr>
+              <tr><td>Musician Marketing</td><td><span class="price">R4,500 / mo</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANE 4: CONTRACTS & TERMS -->
+      <div id="service-terms" class="service-pane">
+        <div class="card" style="margin-bottom: 16px;">
+          <h3 style="color: var(--purple-light); margin-bottom: 10px;"><i class="fa-solid fa-gift"></i> Every Third Month Loyalty Special</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Clients on active monthly contracts receive ONE FREE bonus item every third consecutive month: choose from 1 promotional reel, 1 hour studio time, 10 edited photographs, website update session, or social media strategy consultation.
+          </p>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 16px;">
+          <div class="card">
+            <h3 style="color: var(--purple-light); margin-bottom: 8px;">Month-to-Month</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Standard agreement. Requires 30 days written notice for cancellation.</p>
+          </div>
+          <div class="card">
+            <h3 style="color: var(--purple-light); margin-bottom: 8px;">6 Month Contract</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Includes a <strong style="color: var(--purple-light);">5% discount</strong> and locked pricing throughout the term.</p>
+          </div>
+          <div class="card">
+            <h3 style="color: var(--purple-light); margin-bottom: 8px;">12 Month Contract</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Includes a <strong style="color: var(--purple-light);">10% discount</strong>, priority booking, and quarterly strategy sessions.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="color: var(--purple-light); margin-bottom: 10px;">Terms and Conditions</h3>
+          <ul style="color: var(--text-muted); font-size: 0.85rem; padding-left: 20px; line-height: 1.6;">
+            <li>50% deposit required for one-time projects before work commences.</li>
+            <li>Outstanding balances are due before final delivery of files.</li>
+            <li>Contract clients are billed monthly via EFT, recurring card payment or approved debit order.</li>
+            <li>Travel outside Cape Town CBD may incur additional travel fees.</li>
+            <li>Two revision rounds included unless otherwise stated.</li>
+            <li>Raw footage, project files and source materials remain property of Initialed Entertainment unless agreed in writing.</li>
+            <li>Late payments may result in suspension of services.</li>
+            <li>Bookings are confirmed only after receipt of payment and signed agreement.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -861,6 +931,14 @@
         btn.classList.add('active');
         document.querySelectorAll('.merch-pane').forEach(p => p.classList.remove('active'));
         document.getElementById(`pane-${category}`).classList.add('active');
+      }
+
+      // Services Sub-Tab Switcher
+      function switchServiceTab(category, btn) {
+        document.querySelectorAll('.service-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.service-pane').forEach(p => p.classList.remove('active'));
+        document.getElementById(`service-${category}`).classList.add('active');
       }
     </script>
   </body>
