@@ -45,6 +45,7 @@
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
+        background-repeat: no-repeat;
         color: var(--text-main);
         line-height: 1.6;
         overflow-x: hidden;
@@ -327,6 +328,30 @@
         margin-bottom: 16px;
       }
 
+      .price-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+      }
+
+      .price-table th, .price-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .price-table th {
+        color: var(--purple-light);
+        font-family: var(--font-terminal);
+      }
+
+      .price-table td span.price {
+        color: var(--purple-light);
+        font-weight: bold;
+      }
+
       .btn-primary, .btn-secondary {
         display: inline-flex;
         align-items: center;
@@ -510,7 +535,7 @@
           <div class="route-card" onclick="switchView('services')">
             <i class="fa-solid fa-sliders"></i>
             <h3>Services</h3>
-            <p>Studio bookings, mobile rigs, Wheels & Media setups.</p>
+            <p>Studio bookings, price list, production & media packages.</p>
           </div>
         </div>
       </div>
@@ -522,12 +547,12 @@
       <p class="section-subtitle">Background, vision, and operational scope.</p>
 
       <div class="card">
-        <h3 style="color: var(--purple-light); margin-bottom: 12px;">Initialed Entertainment</h3>
+        <h3 style="color: var(--purple-light); margin-bottom: 12px;">Initialed Entertainment Agency</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
-          Initialed Entertainment is an independent South African producer, recording artist, and audio engineer. Operating through Initialed Entertainment, he creates original music, visual content, and immersive digital experiences while assisting independent artists in developing release-ready records.
+          Initialed Entertainment is a full-service creative media agency offering content creation, social media management, videography, photography, drone services, podcast production, branding, website design, and music production.
         </p>
         <p style="color: var(--text-muted); font-size: 0.95rem;">
-          His work encompasses hip-hop production, vocal engineering, creative branding, visual storytelling, and digital media culture.
+          Operating through Initialed Entertainment, original music, visual content, and immersive digital experiences are created while assisting independent artists and businesses in developing release-ready records and robust digital footprints.
         </p>
       </div>
 
@@ -645,27 +670,95 @@
       </div>
     </section>
 
-    <!-- VIEW 6: SERVICES -->
+    <!-- VIEW 6: SERVICES & PRICING -->
     <section id="view-services" class="view-section">
-      <h2 class="section-title">> SERVICES</h2>
-      <p class="section-subtitle">Studio, mobile rigs, wheels, and media solutions.</p>
+      <h2 class="section-title">> SERVICES & PRICING CATALOGUE</h2>
+      <p class="section-subtitle">Professional studio recording, beat production, packages, and terms.</p>
 
-      <div class="grid-3">
-        <div class="card">
-          <h3 style="color: var(--purple-light); margin-bottom: 10px;">Studio</h3>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">Collaborations, bookings, recording, mixing, mastering & BeatStars beat purchasing.</p>
-          <a href="https://www.beatstars.com/initialed3ndee" target="_blank" class="btn-primary">Buy Beats (BeatStars)</a>
-        </div>
-        <div class="card">
-          <h3 style="color: var(--purple-light); margin-bottom: 10px;">Wheels</h3>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">Car hire for productions and our mobile Studio on Wheels tracking setup.</p>
-          <button class="btn-secondary">Inquire Wheels</button>
-        </div>
-        <div class="card">
-          <h3 style="color: var(--purple-light); margin-bottom: 10px;">Media</h3>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">Full music video direction, photography, and promo packages.</p>
-          <button class="btn-secondary">Request Media</button>
-        </div>
+      <!-- Studio Recording -->
+      <div class="card">
+        <h3 style="color: var(--purple-light); margin-bottom: 10px;"><i class="fa-solid fa-microphone"></i> Studio Recording</h3>
+        <table class="price-table">
+          <tr><th>Service</th><th>Price</th></tr>
+          <tr><td>1 Hour Session</td><td><span class="price">R200</span></td></tr>
+          <tr><td>3 Hour Block</td><td><span class="price">R500</span></td></tr>
+          <tr><td>5 Hour Block</td><td><span class="price">R900</span></td></tr>
+          <tr><td>Full Day (8 Hours)</td><td><span class="price">R1,500</span></td></tr>
+        </table>
+        <a href="#contact" onclick="switchView('contact')" class="btn-primary">Book Studio Session</a>
+      </div>
+
+      <!-- Beat Production -->
+      <div class="card">
+        <h3 style="color: var(--purple-light); margin-bottom: 10px;"><i class="fa-solid fa-music"></i> Beat Production</h3>
+        <table class="price-table">
+          <tr><th>Service</th><th>Price</th></tr>
+          <tr><td>Basic Beat</td><td><span class="price">R500</span></td></tr>
+          <tr><td>Premium Beat</td><td><span class="price">R1,000</span></td></tr>
+          <tr><td>Exclusive Beat</td><td><span class="price">R2,000</span></td></tr>
+        </table>
+        <a href="#contact" onclick="switchView('contact')" class="btn-primary">Buy Beats (BeatStars)</a>
+      </div>
+
+      <!-- Packages (Artist, Music Video, Podcast, Business, Monthly) -->
+      <div class="card">
+        <h3 style="color: var(--purple-light); margin-bottom: 15px;"><i class="fa-solid fa-layer-group"></i> Production & Creative Packages</h3>
+        
+        <h4 style="color: var(--text-main); font-size: 1rem; margin-top: 5px;">Artist Packages</h4>
+        <table class="price-table">
+          <tr><td>Starter Artist Package</td><td><span class="price">R1,500</span></td></tr>
+          <tr><td>Rising Artist Package</td><td><span class="price">R3,500</span></td></tr>
+          <tr><td>Professional Artist Package</td><td><span class="price">R6,000</span></td></tr>
+        </table>
+
+        <h4 style="color: var(--text-main); font-size: 1rem; margin-top: 15px;">Music Video Packages</h4>
+        <table class="price-table">
+          <tr><td>Bronze</td><td><span class="price">R5,000</span></td></tr>
+          <tr><td>Silver</td><td><span class="price">R8,000</span></td></tr>
+          <tr><td>Gold</td><td><span class="price">R12,000</span></td></tr>
+        </table>
+
+        <h4 style="color: var(--text-main); font-size: 1rem; margin-top: 15px;">Podcast Packages</h4>
+        <table class="price-table">
+          <tr><td>Podcast Starter</td><td><span class="price">R1,500 / episode</span></td></tr>
+          <tr><td>Podcast Pro</td><td><span class="price">R3,000 / episode</span></td></tr>
+        </table>
+
+        <h4 style="color: var(--text-main); font-size: 1rem; margin-top: 15px;">Business Specials</h4>
+        <table class="price-table">
+          <tr><td>Restaurant Content Day</td><td><span class="price">R3,500</span></td></tr>
+          <tr><td>Real Estate Listing Package</td><td><span class="price">R2,500</span></td></tr>
+          <tr><td>Small Business Startup Package</td><td><span class="price">R5,000</span></td></tr>
+        </table>
+
+        <h4 style="color: var(--text-main); font-size: 1rem; margin-top: 15px;">Monthly Specials</h4>
+        <table class="price-table">
+          <tr><td>Social Media Launch Special</td><td><span class="price">R3,500 / month</span></td></tr>
+          <tr><td>Musician Marketing Bundle</td><td><span class="price">R4,500 / month</span></td></tr>
+        </table>
+      </div>
+
+      <!-- Contracts & Loyalty -->
+      <div class="card">
+        <h3 style="color: var(--purple-light); margin-bottom: 10px;"><i class="fa-solid fa-handshake"></i> Contracts & Loyalty Specials</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">
+          <strong>Every Third Month Loyalty Special:</strong> Clients on active monthly contracts receive ONE FREE bonus item every third consecutive month (choice of: 1 promotional reel, 1 hour studio time, 10 edited photographs, website update session, or social media strategy consultation).
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 6px;"><strong>Month-to-Month:</strong> 30 days written notice.</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 6px;"><strong>6 Month Contract:</strong> 5% discount and locked pricing.</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;"><strong>12 Month Contract:</strong> 10% discount, priority booking, and quarterly strategy session.</p>
+
+        <h4 style="color: var(--text-main); font-size: 0.95rem; margin-bottom: 8px;">Terms and Conditions:</h4>
+        <ul style="color: var(--text-muted); font-size: 0.85rem; padding-left: 20px; line-height: 1.5;">
+          <li>50% deposit required for one-time projects before work commences.</li>
+          <li>Outstanding balances are due before final delivery of files.</li>
+          <li>Contract clients are billed monthly via EFT, recurring card payment or approved debit order.</li>
+          <li>Travel outside Cape Town CBD may incur additional travel fees.</li>
+          <li>Two revision rounds included unless otherwise stated.</li>
+          <li>Raw footage, project files and source materials remain property of Initialed Entertainment unless agreed in writing.</li>
+          <li>Late payments may result in suspension of services.</li>
+          <li>Bookings are confirmed only after receipt of payment and signed agreement.</li>
+        </ul>
       </div>
     </section>
 
