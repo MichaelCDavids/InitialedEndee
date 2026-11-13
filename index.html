@@ -529,9 +529,7 @@
 
         <ul class="nav-links" id="navLinks">
           <li><button onclick="switchView('hub')">// HOME</button></li>
-          <li><button onclick="switchView('about')">ABOUT</button></li>
-          <li><button onclick="switchView('socials')">SOCIALS</button></li>
-          <li><button onclick="switchView('projects')">PROJECTS</button></li>
+          <li><button onclick="switchView('socials')">SOCIALS & MEDIA</button></li>
           <li><button onclick="switchView('merch')">MERCH</button></li>
           <li><button onclick="switchView('services')">SERVICES</button></li>
           <li><button onclick="switchView('contact')">CONTACT</button></li>
@@ -547,8 +545,8 @@
         <div class="route-grid">
           <div class="route-card" onclick="switchView('socials')">
             <i class="fa-solid fa-user-ninja"></i>
-            <h3>Socials</h3>
-            <p>Artist profile, streaming & Kaapstad video stream.</p>
+            <h3>Socials & Media</h3>
+            <p>Artist bio, streaming, music videos & projects.</p>
           </div>
           <div class="route-card" onclick="switchView('merch')">
             <i class="fa-solid fa-shirt"></i>
@@ -564,22 +562,30 @@
       </div>
     </section>
 
-    <!-- VIEW 2: ABOUT -->
-    <section id="view-about" class="view-section">
-      <h2 class="section-title">> ABOUT ME</h2>
-      <p class="section-subtitle">Background, vision, and operational scope.</p>
-
-      <div class="card">
-        <h3 style="color: var(--purple-light); margin-bottom: 12px;">Initialed Entertainment</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
-          Initialed Entertainment is a full-service creative media agency offering content creation, social media management, videography, photography, drone services, podcast production, branding, website design, and music production.
+    <!-- VIEW 2: SOCIALS & MEDIA (Merged with About & Projects) -->
+    <section id="view-socials" class="view-section">
+      <h2 class="section-title">> SOCIALS & MEDIA</h2>
+      <p class="section-subtitle">Biography, official music channels, video releases, and projects.</p>
+      
+      <!-- Artist Bio -->
+      <div class="card" style="margin-bottom: 20px;">
+        <h3 style="color: var(--purple-light); margin-bottom: 12px;">Initialed Endee (M.i.E)</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 14px;">
+          Initialed Endee (also known as M.i.E) is a Cape Town-based recording artist, producer, and creative director leading Initialed Entertainment. Merging corporate media strategy with raw artistic expression, he turns ambitious creative concepts into polished, release-ready experiences.
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 14px;">
+          A two-time Red Bull 64 Bars performer, Endee commands the mic with precision and presence. His catalog—spanning from his early LiL kid sessions to the <em>Forbidden Heart</em> EP and singles like <em>Lightwork</em> and <em>Eternal (Free$tyle)</em>—is built on deep collaboration across the South African hip-hop circuit. Currently, he is locked in with producer and DJ MDP, crafting some of his best work to date alongside upcoming joint releases. His broader discography features collaborations with King Klutch (<em>From the Kaap</em>, <em>Feisty</em>), Nexus ZA and Swag4TheBagBeats (<em>Drip Check</em>), Billy Brvndxne (<em>Senorita</em>), Dub.L.C (<em>You</em>), Boast NDK (<em>GSh!t</em>), Awakened Records ZA (<em>Lightwork</em>), Jade Alonzo (<em>Half Full</em>, <em>ABC</em>), TheOneAndOnly DMG, and SCXTT3RBRXIN MC (<em>lowkey</em>).
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 14px;">
+          Visual storytelling is equally central to his brand. Endee regularly partners with acclaimed Cape Town sports, culture, and live-event cinematographer ShotByRafeeq (Rafeeq September) alongside frequent musical and visual collaborator Jade Alonzo—supported by VOS Media, Nathmie Davids, JWD Photography, and Hybrid Creativity—to translate his sound into high-energy music videos and visual campaigns.
         </p>
         <p style="color: var(--text-muted); font-size: 0.95rem;">
-          Operating through Initialed Entertainment, original music, visual content, and immersive digital experiences are created while assisting independent artists and businesses in developing release-ready records.
+          Beyond his own artistry, Initialed Endee runs a full-service creative agency built to elevate independent talent and forward-thinking brands through studio engineering, beat production, visual direction, web design, and brand execution.
         </p>
       </div>
 
-      <div class="grid-3">
+      <!-- Roles Grid -->
+      <div class="grid-3" style="margin-bottom: 20px;">
         <div class="card">
           <i class="fa-solid fa-record-vinyl" style="font-size: 1.5rem; color: var(--purple-primary); margin-bottom: 10px;"></i>
           <h3>Producer</h3>
@@ -596,19 +602,15 @@
           <p style="color: var(--text-muted); font-size: 0.85rem;">Music videos, visual aesthetics, artwork, and branding execution.</p>
         </div>
       </div>
-    </section>
 
-    <!-- VIEW 3: SOCIALS -->
-    <section id="view-socials" class="view-section">
-      <h2 class="section-title">> SOCIALS & MEDIA</h2>
-      <p class="section-subtitle">Official music channels and visual releases.</p>
-      
-      <div class="card">
-        <h3 style="color: var(--purple-light); margin-bottom: 10px;">Streaming Platforms</h3>
+      <!-- Streaming Platforms -->
+      <div class="card" style="margin-bottom: 20px;">
+        <h3 style="color: var(--purple-light); margin-bottom: 10px;">Streaming Platforms & Channels</h3>
         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
-          Listen to official singles and albums across digital platforms.
+          Listen to official singles, albums, and video releases.
         </p>
         <div style="display:flex; flex-direction: column; gap: 10px;">
+          <a href="https://www.youtube.com/@initialed_endee" target="_blank" class="btn-secondary"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Official YouTube Channel (@initialed_endee)</a>
           <a href="https://open.spotify.com/artist/1jZRmG0jWORdTFNow90atA" target="_blank" class="btn-secondary"><i class="fa-brands fa-spotify" style="color: #1db954;"></i> Spotify</a>
           <a href="https://audiomack.com/initialed_endee" target="_blank" class="btn-secondary"><i class="fa-solid fa-music" style="color: #ffa500;"></i> Audiomack</a>
           <a href="https://on.soundcloud.com/LBsNk8vXKwnRrVS3A" target="_blank" class="btn-secondary"><i class="fa-brands fa-soundcloud" style="color: #ff5500;"></i> SoundCloud</a>
@@ -617,24 +619,35 @@
         </div>
       </div>
 
-      <!-- Kaapstad Music Video -->
-      <div class="card">
-        <h3 style="margin-bottom: 5px;">Featured Video: Kaapstad ft. King Klutch</h3>
+      <!-- Featured Music Videos -->
+      <div class="card" style="margin-bottom: 20px;">
+        <h3 style="margin-bottom: 5px;">Kaapstad ft. King Klutch</h3>
         <p style="color: var(--text-muted); font-size: 0.85rem;">Official music video stream.</p>
         <div class="video-wrapper">
           <iframe src="https://www.youtube.com/embed/I7KX11Y4Wq4" title="Kaapstad Music Video" allowfullscreen></iframe>
         </div>
       </div>
-    </section>
 
-    <!-- VIEW 4: PROJECTS -->
-    <section id="view-projects" class="view-section">
-      <h2 class="section-title">> PROJECTS & CREATIVE WORK</h2>
-      <p class="section-subtitle">Highlights from recent studio sessions, releases, and gaming culture.</p>
+      <div class="card" style="margin-bottom: 20px;">
+        <h3 style="margin-bottom: 5px;">Eternal Freestyle</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Official freestyle release.</p>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/vdxB36jFIyU" title="Eternal Freestyle" allowfullscreen></iframe>
+        </div>
+      </div>
 
-      <div class="grid-3" style="margin-bottom: 24px;">
+      <div class="card" style="margin-bottom: 20px;">
+        <h3 style="margin-bottom: 5px;">Lightwork</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Official music video stream.</p>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/Mqx4DDDMaL4" title="Lightwork" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- Projects & Creative Work Highlights -->
+      <div class="grid-3" style="margin-bottom: 20px;">
         <div class="card">
-          <h4>Forbidden Heart</h4>
+          <h4>Forbidden Heart EP</h4>
           <p style="color: var(--text-muted); font-size: 0.85rem; margin: 8px 0 16px;">The project that changed everything. Featured release from Initialed Entertainment.</p>
           <a href="https://open.spotify.com/album/7uAbRkXhRjH4yZlre2E9V2" target="_blank" class="btn-primary"><i class="fa-brands fa-spotify"></i> Listen on Spotify</a>
         </div>
@@ -644,21 +657,14 @@
           <a href="https://open.spotify.com/album/7yXlljD8dbTNzs5zmDiAB7" target="_blank" class="btn-primary"><i class="fa-solid fa-compact-disc"></i> View Collection</a>
         </div>
         <div class="card">
-          <h4>Visual & Video Release</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 8px 0 16px;">Official music videos showcasing creative direction.</p>
-          <a href="https://youtu.be/I7KX11Y4Wq4" target="_blank" class="btn-primary"><i class="fa-brands fa-youtube"></i> Watch on YouTube</a>
+          <h4>Gaming & Culture</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 8px 0 16px;">Exploring interactive media, game sound design, soundscapes, and digital cultural shifts.</p>
+          <span class="btn-secondary" style="cursor: default;">Active Interest</span>
         </div>
-      </div>
-
-      <div class="card">
-        <h3 style="color: var(--purple-light); margin-bottom: 8px;">Gaming & Culture</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">
-          Exploring interactive media, game sound design, soundscapes, and digital cultural shifts.
-        </p>
       </div>
     </section>
 
-    <!-- VIEW 5: MERCH -->
+    <!-- VIEW 3: MERCH -->
     <section id="view-merch" class="view-section">
       <h2 class="section-title">> MERCH STOREFRONT</h2>
       <p class="section-subtitle">Official apparel & fan marketplace.</p>
@@ -693,7 +699,7 @@
       </div>
     </section>
 
-    <!-- VIEW 6: SERVICES & PRICING CATALOGUE (UPGRADED TABBED LAYOUT) -->
+    <!-- VIEW 4: SERVICES & PRICING CATALOGUE (UPGRADED TABBED LAYOUT) -->
     <section id="view-services" class="view-section">
       <h2 class="section-title">> SERVICES & PRICE CATALOGUE</h2>
       <p class="section-subtitle">Professional studio recording, beat production, packages, and terms.</p>
@@ -729,7 +735,7 @@
               <tr><td>Premium Beat</td><td><span class="price">R1,000</span></td></tr>
               <tr><td>Exclusive Beat</td><td><span class="price">R2,000</span></td></tr>
             </table>
-            <a href="#contact" onclick="switchView('contact')" class="btn-primary" style="margin-top: 10px;">Buy Beats (BeatStars)</a>
+            <a href="https://www.beatstars.com/initialed3ndee" target="_blank" class="btn-primary" style="margin-top: 10px;">Buy Beats (BeatStars)</a>
           </div>
         </div>
       </div>
@@ -832,7 +838,7 @@
       </div>
     </section>
 
-    <!-- VIEW 7: CONTACT -->
+    <!-- VIEW 5: CONTACT -->
     <section id="view-contact" class="view-section">
       <h2 class="section-title">> GET IN TOUCH</h2>
       <p class="section-subtitle">Direct communication channels for collaborations and bookings.</p>
